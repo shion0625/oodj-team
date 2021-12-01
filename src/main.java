@@ -3,124 +3,112 @@ import Committee.SupplyVaccines;
 import people.Appointment;
 import people.Program;
 
-import Class.Login;
+
 import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) throws IOException {
+        boolean main_loop = true;
+        boolean sub_loop = true;
+        FileOperation f1 = new FileOperation();
         Scanner sc = new Scanner(System.in);
-
-        //add login form
-        System.out.println("Please Enter your email");
-        String email = sc.nextLine();
-        System.out.println("Please Enter your password");
-        String password = sc.nextLine();
-        Login login = new Login(email, password);
-        System.out.println(login.result.get(0));
-
-
-        if(login.result.get(0).equals("Committee") ) {
-            boolean main_loop = true;
-            boolean sub_loop = true;
-            FileOperation f1 = new FileOperation();
-            while (main_loop) {
-                System.out.println("---------------------\n" +
-                        "Committee menu\n-----------------------\n" +
-                        "(1)About people\n" +
-                        "(2)Manage vaccine \n" +
-                        "(3)Supply vaccine");
-                int main_choice = Integer.parseInt(sc.nextLine());
-                if (main_choice == 1) {
-                    while (sub_loop) {
-                        System.out.println("---------------------\n" +
-                                "Committee menu\n" +
-                                "-----------------------\n" +
-                                "(1)Add new person\n" +
-                                "(2)Modify person\n" +
-                                "(3)View all people\n" +
-                                "(4)Search specific person \n" +
-                                "(5)Exit");
-                        int sub_choice = Integer.parseInt(sc.nextLine());
-                        if (sub_choice == 1) {
-                            System.out.println("Enter mail address");
-                            String mail = sc.nextLine();
-                            System.out.println("Enter password");
-                            String ps = sc.nextLine();
-                            System.out.println("Enter name");
-                            String name = sc.nextLine();
-                            Committee comObj = new Committee(mail, ps, name, "No");
-                            f1.RegisterPerson(comObj);
-                        }
-                        if (sub_choice == 2) {
-                            System.out.println("Enter mail address you want to modify");
-                            String mail = sc.nextLine();
-                            f1.ModifyPerson(mail);
-                        }
-                        if (sub_choice == 3) {
-                            f1.ViewPerson();
-                        }
-                        if (sub_choice == 4) {
-                            System.out.println("Enter mail address you want to search");
-                            String mail = sc.nextLine();
-                            f1.SearchPerson(mail);
-                        }
-                        if (sub_choice == 5) {
-                            System.out.println("See you later");
-                            sub_loop = false;
-                        }
+        while (main_loop) {
+            System.out.println("---------------------\n" +
+                    "Committee menu\n-----------------------\n" +
+                    "(1)About people\n" +
+                    "(2)Manage vaccine \n" +
+                    "(3)Supply vaccine");
+            int main_choice = Integer.parseInt(sc.nextLine());
+            if (main_choice == 1) {
+                while (sub_loop) {
+                    System.out.println("---------------------\n" +
+                            "Committee menu\n" +
+                            "-----------------------\n" +
+                            "(1)Add new person\n" +
+                            "(2)Modify person\n" +
+                            "(3)View all people\n" +
+                            "(4)Search specific person \n" +
+                            "(5)Exit");
+                    int sub_choice = Integer.parseInt(sc.nextLine());
+                    if (sub_choice == 1) {
+                        System.out.println("Enter mail address");
+                        String mail = sc.nextLine();
+                        System.out.println("Enter password");
+                        String ps = sc.nextLine();
+                        System.out.println("Enter name");
+                        String name = sc.nextLine();
+                        Committee comObj = new Committee(mail, ps, name, "No");
+                        f1.RegisterPerson(comObj);
                     }
-                    return;
-                }
-                if (main_choice == 2) {
-                    boolean subloop = true;
-                    while (subloop) {
-                        System.out.println("---------------------\n" +
-                                "Manage menu\n-----------------------\n" +
-                                "(1)Add new schedule\n" +
-                                "(2)Remove schedule\n" +
-                                "(3)Modify schedule \n" +
-                                "(4)View all people \n" +
-                                "(5)Search specific person \n" +
-                                "(6)Exit");
-                        int sub_choice = Integer.parseInt(sc.nextLine());
-                        if (sub_choice == 1) {
-                            System.out.println("Which person do you want to add schedule?");
-                            String mail = sc.nextLine();
-                            f1.AddSchedule(mail);
-                        }
-                        if (sub_choice == 2) {
-                            System.out.println("Which person do you want to remove schedule?");
-                            String mail = sc.nextLine();
-                            f1.RemoveSchedule(mail);
-                        }
-                        if (sub_choice == 3) {
-                            System.out.println("Which person do you want to modify schedule?");
-                            String mail = sc.nextLine();
-                            f1.ModifySchedule(mail);
-                        }
-                        if (sub_choice == 4) {
-                            f1.ViewSchedule();
-                        }
-                        if (sub_choice == 5) {
-                            System.out.println("Which person do you want to search schedule?");
-                            String mail = sc.nextLine();
-                            f1.SearchSchedule(mail);
-                        }
-                        if (sub_choice == 6) {
-                            subloop = false;
-                        }
+                    if (sub_choice == 2) {
+                        System.out.println("Enter mail address you want to modify");
+                        String mail = sc.nextLine();
+                        f1.ModifyPerson(mail);
+                    }
+                    if (sub_choice == 3) {
+                        f1.ViewPerson();
+                    }
+                    if (sub_choice == 4) {
+                        System.out.println("Enter mail address you want to search");
+                        String mail = sc.nextLine();
+                        f1.SearchPerson(mail);
+                    }
+                    if (sub_choice == 5) {
+                        System.out.println("See you later");
+                        sub_loop = false;
                     }
                 }
-                if (main_choice == 3) {
-
+                return;
+            }
+            if (main_choice == 2) {
+                boolean subloop = true;
+                while (subloop) {
+                    System.out.println("---------------------\n" +
+                            "Manage menu\n-----------------------\n" +
+                            "(1)Add new schedule\n" +
+                            "(2)Remove schedule\n" +
+                            "(3)Modify schedule \n" +
+                            "(4)View all people \n" +
+                            "(5)Search specific person \n" +
+                            "(6)Exit");
+                    int sub_choice = Integer.parseInt(sc.nextLine());
+                    if (sub_choice == 1) {
+                        System.out.println("Which person do you want to add schedule?");
+                        String mail = sc.nextLine();
+                        f1.AddSchedule(mail);
+                    }
+                    if (sub_choice == 2) {
+                        System.out.println("Which person do you want to remove schedule?");
+                        String mail = sc.nextLine();
+                        f1.RemoveSchedule(mail);
+                    }
+                    if (sub_choice == 3) {
+                        System.out.println("Which person do you want to modify schedule?");
+                        String mail = sc.nextLine();
+                        f1.ModifySchedule(mail);
+                    }
+                    if (sub_choice == 4) {
+                        f1.ViewSchedule();
+                    }
+                    if (sub_choice == 5) {
+                        System.out.println("Which person do you want to search schedule?");
+                        String mail = sc.nextLine();
+                        f1.SearchSchedule(mail);
+                    }
+                    if (sub_choice == 6) {
+                        subloop = false;
+                    }
                 }
-                main_loop = false;
-        }
-        }
-        if(login.result.get(0).equals("Citizen")) {
+            }
+            if (main_choice == 3) {
+                System.out.println("mainloop for 3");
+                return;
+            }
+            main_loop = false;
+
             Scanner scan = new Scanner(System.in);
-
-            String EnteredEmail = login.result.get(1);
+            System.out.println("please enter your Email");
+            String EnteredEmail = scan.nextLine();
             System.out.println("" +
                     "\n1) Register to the vaccination programme" +
                     "\n2) Submit vaccination appointment" +
@@ -149,8 +137,6 @@ public class main {
                 }
 
             }
-        } else {
-            System.out.println("error");
         }
     }
 }
