@@ -2,9 +2,6 @@ package Class;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.io.*;
 
@@ -13,7 +10,10 @@ public class Login {
     protected String password;
     public ArrayList<String> result;
 
-    public Login() {};
+    public Login() {
+    }
+
+    ;
 
     public Login(String mailAddress, String password) throws IOException {
         this.mailAddress = mailAddress;
@@ -35,13 +35,13 @@ public class Login {
                 String passwordInLine = Line.split(" ")[1];
                 String isCommittee = Line.split(" ")[3];
                 if (mail.equals(emailInLine) && ps.equals(passwordInLine)) {
-                    if(isCommittee.equals("Yes")) {
+                    if (isCommittee.equals("Yes")) {
                         values.add("Committee");
                         values.add(emailInLine);
 
                         return values;
                     }
-                    if(isCommittee.equals("No")) {
+                    if (isCommittee.equals("No")) {
                         values.add("Citizen");
                         values.add(emailInLine);
 
