@@ -3,14 +3,14 @@ package Class;
 import java.io.*;
 
 public class OverrideOfFile {
-    private String email;
+    private String target;
     private String fileName;
     private int array_num;
     private String textToInclude;
     public OverrideOfFile() {}
 
-    public OverrideOfFile(String email, String fileName,int array_num, String textToInclude) {
-        this.email = email;
+    public OverrideOfFile(String target, String fileName,int array_num, String textToInclude) {
+        this.target = target;
         this.fileName = fileName;
         this.array_num = array_num;
         this.textToInclude = textToInclude;
@@ -25,7 +25,7 @@ public class OverrideOfFile {
             String currentLine;
             while ((currentLine = reader.readLine()) != null){
                 String[] UsersArray = currentLine.split(" ");
-                if(UsersArray[0].equals(this.email)) {
+                if(UsersArray[0].equals(this.target)) {
                     UsersArray[this.array_num] = this.textToInclude;
                     String UserString = String.join(" ", UsersArray);
                     writer.write(UserString);

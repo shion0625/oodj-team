@@ -1,1 +1,6 @@
-id center_name date num_person2 ryuji_house 2-12 24
+venue_name date num_person
+ryuji_house 11/2 32
+kaito_house 11/4 232
+ryuji_house 12/2 21
+kaito_house 1/2 234
+japan_house 11/2 45
