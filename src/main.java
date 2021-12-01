@@ -99,42 +99,44 @@ public class main {
                         subloop = false;
                     }
                 }
-        }
-          if (main_choice == 3) {
-             System.out.println("mainloop for 3");
-               return;
-        }
-            main_loop = false;
-        
-        Scanner scan = new Scanner(System.in);
-        System.out.println("please enter your Email");
-        String EnteredEmail = scan.nextLine();
-        System.out.println("" +
-                "\n1) Register to the vaccination programme" +
-                "\n2) Submit vaccination appointment" +
-                "\n3) View Vaccination status" +
-                "\n4) Exit");
-        int choiceFunctionalities = scan.nextInt();
-        if(choiceFunctionalities == 1){
-            Program program = new Program(EnteredEmail);
-            boolean ProgramSection = true;
-            while(ProgramSection) {
-                System.out.println("" +
-                        "\n1) Resister" +
-                        "\n2) Modify" +
-                        "\n3) View" +
-                        "\n4) Exit");
-                int choiceProgram = scan.nextInt();
-                if(choiceProgram == 1) program.Register();
-                if(choiceProgram == 2) program.Change();
-                if(choiceProgram == 3) program.View();
-                if(choiceProgram == 4) ProgramSection = false;
             }
+            if (main_choice == 3) {
+                System.out.println("mainloop for 3");
+                return;
+            }
+            main_loop = false;
 
-        if(choiceFunctionalities == 3) {
-            SupplyVaccines supplyVaccines = new SupplyVaccines();
-            supplyVaccines.Add();
+            Scanner scan = new Scanner(System.in);
+            System.out.println("please enter your Email");
+            String EnteredEmail = scan.nextLine();
+            System.out.println("" +
+                    "\n1) Register to the vaccination programme" +
+                    "\n2) Submit vaccination appointment" +
+                    "\n3) View Vaccination status" +
+                    "\n4) Exit");
+            int choiceFunctionalities = scan.nextInt();
+            if (choiceFunctionalities == 1) {
+                Program program = new Program(EnteredEmail);
+                boolean ProgramSection = true;
+                while (ProgramSection) {
+                    System.out.println("" +
+                            "\n1) Resister" +
+                            "\n2) Modify" +
+                            "\n3) View" +
+                            "\n4) Exit");
+                    int choiceProgram = scan.nextInt();
+                    if (choiceProgram == 1) program.Register();
+                    if (choiceProgram == 2) program.Change();
+                    if (choiceProgram == 3) program.View();
+                    if (choiceProgram == 4) ProgramSection = false;
+                }
+
+                if (choiceFunctionalities == 3) {
+                    SupplyVaccines supplyVaccines = new SupplyVaccines();
+                    supplyVaccines.Add();
+                }
+
+            }
         }
-
     }
 }
