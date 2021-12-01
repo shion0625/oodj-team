@@ -2,8 +2,9 @@ import java.io.IOException;
 import Committee.SupplyVaccines;
 import people.Appointment;
 import people.Program;
-
 import Class.Login;
+
+
 import java.util.Scanner;
 
 public class main {
@@ -175,10 +176,6 @@ public class main {
                     if (choiceAppointment == 4) AppointmentSection = false;
                 }
             }
-            if (choiceFunctionalities == 3) {
-                System.out.println("hey");
-            }
         }
     }
 }
-
