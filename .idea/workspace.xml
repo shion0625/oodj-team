@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="776cb813-15ef-4de6-a45e-26b41537025b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Committee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Committee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/center.txt" beforeDir="false" afterPath="$PROJECT_DIR$/center.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/Class/OverrideOfFile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/Committee/SupplyVaccines.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/people/Appointment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/people/People.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/oodj-team/people/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Committee/SupplyVaccines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Committee/SupplyVaccines.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
