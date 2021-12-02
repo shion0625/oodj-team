@@ -15,7 +15,7 @@ public class Committee {
     }
 
     public String writeNewPerson() {
-        return this.mail + " " + this.password + " " + this.name + " " + this.isCommittee;
+        return this.mail + " " + this.password + " " + this.name + " " + this.isCommittee +" NULL NULL NO";
     }
 
 

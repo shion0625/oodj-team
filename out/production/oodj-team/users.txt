@@ -1,1 +1,0 @@
-email  password  name  committee  program_subscribe vaccination_date

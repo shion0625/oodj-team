@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -13,7 +14,7 @@ public class FileOperation {
     static void eliminateDuplicates(ArrayList<String> strings) {
         List<String> listA = new ArrayList<String>(strings);
         List<String> listB = new ArrayList<String>(new LinkedHashSet<>(listA));
-        System.out.println(listB);
+        JOptionPane.showMessageDialog(null, listB);
 
     }
 
@@ -30,64 +31,51 @@ public class FileOperation {
         }
     }
 
-    public void ModifyPerson(String mail) throws IOException {
+    public void ModifyPerson(String mail, String chmail, String chPw, String chName) throws IOException {
         try {
-            Scanner SC = new Scanner(System.in);
             File usersFile = new File("users.txt");
             File TempFile = new File("temp.txt");
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(TempFile));
 
-            int isExist = 0;
+            boolean successful = false;
 
             String currentLine;
 
             while ((currentLine = reader.readLine()) != null) {
                 String Line = currentLine;
-
                 String[] personArr = Line.split(" ");
-
+                boolean flag = false;
                 if (personArr[0].equals(mail)) {
-                    System.out.println("What do you want to change? \n(1)mail \n(2)password \n(3)name");
-                    int choice = Integer.parseInt(SC.nextLine());
-                    if (choice == 1) {
-                        System.out.println("Enter new email");
-                        String newMail = SC.nextLine();
-                        personArr[0] = newMail;
-
-                        writer.write(String.join(" ", personArr));
-                        writer.close();
-                        boolean successful = TempFile.renameTo(usersFile);
+                    if (chmail !=null) {
+                        personArr[0] = chmail;
+                        flag = true;
                     }
-                    if (choice == 2) {
-                        System.out.println("Enter new password");
-                        String ps = SC.nextLine();
-                        personArr[1] = ps;
-
-                        writer.write(String.join(" ", personArr));
-                        writer.close();
-                        boolean successful = TempFile.renameTo(usersFile);
+                    if (chPw != null) {
+                        personArr[1] = chPw;
+                        flag = true;
                     }
-                    if (choice == 3) {
-                        System.out.println("Enter new name");
-                        String name = SC.nextLine();
-                        personArr[2] = name;
-
-                        writer.write(String.join(" ", personArr));
-                        writer.close();
-                        boolean successful = TempFile.renameTo(usersFile);
+                    if (chName != null) {
+                        personArr[2] = chName;
+                        flag = true;
+                        System.out.println(chName);
                     }
-
-                } else {
-                    isExist = 1;
                 }
+                if(flag) {
+                    writer.write(String.join(" ", personArr));
+                    writer.write("\n");
+                    continue;
+                }
+                writer.write(currentLine);
+                writer.write("\n");
             }
-            if (isExist == 0) {
-                System.out.println("Successful!");
+            writer.close();
+            successful = TempFile.renameTo(usersFile);
+            if (successful) {
+                JOptionPane.showMessageDialog(null, "successful");
             } else {
-                System.out.println("Cannot find this email");
+                JOptionPane.showMessageDialog(null, "something failed");
             }
-
         } catch (IOException io) {
             io.printStackTrace();
         }
@@ -95,13 +83,14 @@ public class FileOperation {
 
     public void ViewPerson() throws IOException {
         try {
-            Scanner SC = new Scanner(System.in);
             File usersFile = new File("users.txt");
-            SC = new Scanner(usersFile);
+            Scanner SC = new Scanner(usersFile);
+            String total = "";
             while (SC.hasNextLine()) {
                 String Line = SC.nextLine();
-                System.out.println(Line);
+                total = total.concat(Line + "\n");
             }
+            JOptionPane.showMessageDialog(null, total);
 
         } catch (IOException io) {
             io.printStackTrace();
@@ -117,19 +106,19 @@ public class FileOperation {
                 String Line = SC.nextLine();
                 String[] personArr = Line.split(" ");
                 if (personArr[0].equals(mail)) {
-                    System.out.println(Line);
+                    JOptionPane.showMessageDialog(null, Line);
                     flag = 1;
                 }
             }
             if (flag == 0) {
-                System.out.println("Cannot find this person");
+                JOptionPane.showMessageDialog(null, "cannot find person");
             }
         } catch (IOException io) {
             io.printStackTrace();
         }
     }
 
-    public void AddSchedule(String mail) throws IOException {
+    public void AddSchedule(String mail, String date) throws IOException {
         try {
             Scanner SC = new Scanner(System.in);
             File usersFile = new File("users.txt");
@@ -137,34 +126,32 @@ public class FileOperation {
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(TempFile));
 
-            int isExist = 0;
-
+            boolean successful = false;
+            boolean success =false;
             String currentLine;
-
             while ((currentLine = reader.readLine()) != null) {
-
                 String[] personArr = currentLine.split(" ");
-
                 if (personArr[0].equals(mail)) {
-                    if (personArr[4] == null) {
-                        String date = SC.nextLine();
+                    if (personArr[4].equals("NULL")) {
                         personArr[4] = date;
                         writer.write(String.join(" ", personArr));
-                        writer.close();
-                        boolean successful = TempFile.renameTo(usersFile);
-                    } else {
-                        System.out.println("the person hasn't registered appointment please check it again");
+                        writer.write("\n");
+                        success = true;
+                        continue;
                     }
-                } else {
-                    isExist = 1;
-                }
-            }
-            if (isExist == 0) {
-                System.out.println("Successful!");
-            } else {
-                System.out.println("Cannot find this email");
-            }
 
+                }
+                writer.write(currentLine);
+                writer.write("\n");
+            }
+            if(!success) {
+                JOptionPane.showMessageDialog(null, "not found");
+            }
+            writer.close();
+            successful = TempFile.renameTo(usersFile);
+            if (successful) {
+                JOptionPane.showMessageDialog(null, "success!");
+            }
         } catch (IOException io) {
             io.printStackTrace();
         }
@@ -172,75 +159,60 @@ public class FileOperation {
 
     public void RemoveSchedule(String mail) throws IOException {
         try {
-            Scanner SC = new Scanner(System.in);
             File usersFile = new File("users.txt");
             File TempFile = new File("temp.txt");
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(TempFile));
-
-            int isExist = 0;
-
             String currentLine;
-
             while ((currentLine = reader.readLine()) != null) {
-
                 String[] personArr = currentLine.split(" ");
-
                 if (personArr[0].equals(mail)) {
-                    String date = SC.nextLine();
-                    personArr[4] = null;
+                    personArr[4] = "NULL";
                     writer.write(String.join(" ", personArr));
-                    writer.close();
-                    boolean successful = TempFile.renameTo(usersFile);
-                } else {
-                    isExist = 1;
+                    writer.write("\n");
+                    continue;
                 }
+                writer.write(currentLine);
+                writer.write("\n");
             }
-            if (isExist == 0) {
-                System.out.println("Successful!");
-            } else {
-                System.out.println("Cannot find this email");
+            writer.close();
+            boolean successful = TempFile.renameTo(usersFile);
+            if (successful) {
+                JOptionPane.showMessageDialog(null, "success");
+                return;
             }
+            JOptionPane.showMessageDialog(null, "failed");
         } catch (IOException io) {
             io.printStackTrace();
         }
     }
 
-    public void ModifySchedule(String mail) throws IOException {
+    public void ModifySchedule(String mail, String date) throws IOException {
         try {
-            Scanner SC = new Scanner(System.in);
+
             File usersFile = new File("users.txt");
             File TempFile = new File("temp.txt");
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(TempFile));
-
-            int isExist = 0;
-
             String currentLine;
-
+            boolean successful = false;
             while ((currentLine = reader.readLine()) != null) {
-
                 String[] personArr = currentLine.split(" ");
-
                 if (personArr[0].equals(mail)) {
-                    if (personArr[4] != null) {
-                        System.out.println("Which date do you want to??");
-                        String date = SC.nextLine();
+                    if (!personArr[4].equals("NULL")) {
+
                         personArr[4] = date;
                         writer.write(String.join(" ", personArr));
-                        writer.close();
-                        boolean successful = TempFile.renameTo(usersFile);
-                    } else {
-                        System.out.println("the person hasn't registered appointment please check it again");
+                        continue;
                     }
-                } else {
-                    isExist = 1;
                 }
+                writer.write(currentLine);
+                writer.write("\n");
             }
-            if (isExist == 0) {
-                System.out.println("Successful!");
-            } else {
-                System.out.println("Cannot find this email");
+            writer.close();
+            successful = TempFile.renameTo(usersFile);
+            if (successful) {
+                JOptionPane.showMessageDialog(null, "success");
             }
 
         } catch (IOException io) {
@@ -275,12 +247,12 @@ public class FileOperation {
                 String Line = SC.nextLine();
                 String[] personArr = Line.split(" ");
                 if (personArr[0].equals(mail)) {
-                    System.out.println(personArr[5]);
+                    JOptionPane.showMessageDialog(null, Line);
                     flag = 1;
                 }
             }
             if (flag == 0) {
-                System.out.println("Cannot find this person");
+                JOptionPane.showMessageDialog(null, "Cannot find this person");
             }
         } catch (IOException io) {
             io.printStackTrace();
