@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.ManageSchedules;
 
 public class ManageSchedule extends JFrame{
     private JButton addNewScheduleButton;
@@ -43,9 +44,9 @@ public class ManageSchedule extends JFrame{
         viewAllScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileOperation f1 = new FileOperation();
+                ManageSchedules m1 = new ManageSchedules();
                 try {
-                    f1.ViewSchedule();
+                    m1.ViewSchedule();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

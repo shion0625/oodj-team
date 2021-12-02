@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.*;
 
 public class AddPerson extends JFrame{
     private JTextField mail;
@@ -18,12 +19,12 @@ public class AddPerson extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileOperation f1 = new FileOperation();
+                    PersonalForCommittee p1 = new PersonalForCommittee();
                     String MailAdd = mail.getText();
                     String Pass = password.getText();
                     String Name = name.getText();
                     Committee comObj = new Committee(MailAdd, Pass, Name, "No");
-                    f1.RegisterPerson(comObj);
+                    p1.RegisterPerson(comObj);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

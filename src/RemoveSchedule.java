@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.ManageSchedules;
 
 public class RemoveSchedule extends JFrame {
     private JTextField enterMail;
@@ -16,9 +17,9 @@ public class RemoveSchedule extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileOperation f1 = new FileOperation();
+                    ManageSchedules m1 = new ManageSchedules();
                     String mail = enterMail.getText();
-                    f1.RemoveSchedule(mail);
+                    m1.RemoveSchedule(mail);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

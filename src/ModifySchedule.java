@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.ManageSchedules;
 
 public class ModifySchedule extends JFrame{
     private JPanel Add_Schedule_Panel;
@@ -19,8 +20,8 @@ public class ModifySchedule extends JFrame{
                 try {
                     String Mail = mail.getText();
                     String date = enterDate.getText();
-                    FileOperation f1 = new FileOperation();
-                    f1.ModifySchedule(Mail, date);
+                    ManageSchedules m1 = new ManageSchedules();
+                    m1.ModifySchedule(Mail, date);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

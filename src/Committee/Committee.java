@@ -1,3 +1,5 @@
+package Committee;
+
 import java.io.File;
 import java.io.FileWriter;
 
@@ -12,7 +14,6 @@ public class Committee {
         this.password = ps;
         this.name = na;
         this.isCommittee = is;
-
     }
 
     public String writeNewPerson() {

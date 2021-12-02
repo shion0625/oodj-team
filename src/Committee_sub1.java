@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.rmi.MarshalledObject;
+import Committee.*;
 
 public class Committee_sub1 extends JFrame{
     private JButton addNewPersonButton;
@@ -30,9 +30,9 @@ public class Committee_sub1 extends JFrame{
         viewAllPeopleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileOperation f1 = new FileOperation();
+                PersonalForCommittee p1 = new PersonalForCommittee();
                 try {
-                    f1.ViewPerson();
+                    p1.ViewPerson();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

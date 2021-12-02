@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.ManageSchedules;
 
 public class SearchSchedule extends JFrame{
     private JTextField enterMail;
@@ -16,9 +17,9 @@ public class SearchSchedule extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String mail = enterMail.getText();
-                FileOperation f1 = new FileOperation();
+                ManageSchedules m1 = new ManageSchedules();
                 try {
-                    f1.SearchSchedule(mail);
+                    m1.SearchSchedule(mail);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
