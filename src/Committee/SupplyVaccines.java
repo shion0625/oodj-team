@@ -5,30 +5,26 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import Class.OverrideOfFile;
 
+import Class.*;
+
+import javax.swing.*;
 
 
 public class SupplyVaccines {
-    private String email;
 
     public SupplyVaccines() {
     }
 
     public SupplyVaccines(String email) {
-        this.email = email;
+
     }
 
-    public void Add() {
+    public void Add(String name, String date, String num) {
         try {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("please enter Name of Venue");
-            String EnteredVenue = scan.nextLine();
-            System.out.println("please enter date");
-            String EnteredDate = scan.nextLine();
-            System.out.println("please enter Number of people taken");
-            String EnteredNumPerson = scan.nextLine();
+
             File centerFile = new File("center.txt");
             FileWriter Fw = new FileWriter(centerFile, true);
-            Fw.write(EnteredVenue + " " + EnteredDate + " " + EnteredNumPerson);
+            Fw.write(name + " " + date + " " + num + " 0");
             Fw.write("\n");
             Fw.close();
         } catch (IOException ex) {
@@ -36,12 +32,8 @@ public class SupplyVaccines {
         }
     }
 
-    public void Remove() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("please enter Name of Venue");
-        String EnteredVenue = scan.nextLine();
-        System.out.println("please enter date");
-        String EnteredDate = scan.nextLine();
+    public void Remove(String name, String date) {
+
         try {
             File mainFile = new File("center.txt");
             File tempFile = new File("centerTemp.txt");
@@ -50,7 +42,7 @@ public class SupplyVaccines {
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 String[] CenterArray = currentLine.split(" ");
-                if (CenterArray[0].equals(EnteredVenue) && CenterArray[1].equals(EnteredDate)) {
+                if (CenterArray[0].equals(name) && CenterArray[1].equals(date)) {
                     continue;
                 }
                 writer.write(currentLine);
@@ -59,63 +51,72 @@ public class SupplyVaccines {
             writer.close();
             boolean successful = tempFile.renameTo(mainFile);
             if (successful) {
-                System.out.println("delete id venue");
+                JOptionPane.showMessageDialog(null, "deleted!");
             } else {
-                System.out.println("fail id venue");
+                JOptionPane.showMessageDialog(null, "failed");
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void Modify() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("please enter Name of Venue");
-        String EnteredVenue = scan.nextLine();
-        System.out.println("" +
-                "please enter change position\n" +
-                "1) change venue name\n" +
-                "2) change date\n" +
-                "3) change Number of people taken");
-        String EnteredNum = scan.nextLine();
-        int choiceNum = Integer.parseInt(EnteredNum);
-        System.out.println("Please enter the value");
-        String EnteredValue = scan.nextLine();
-        OverrideOfFile override = new OverrideOfFile(EnteredVenue, "center.txt", choiceNum - 1, EnteredValue);
-        boolean result = override.Override();
-    }
-    public void View() {
+    public void Modify(String changeName, String changeDate, String name, String date, String num) {
         try {
             File centerFile = new File("center.txt");
+            File TempFile = new File("temp.txt");
             BufferedReader reader = new BufferedReader(new FileReader(centerFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(TempFile));
+
+            boolean successful = false;
+
             String currentLine;
+
             while ((currentLine = reader.readLine()) != null) {
-                String[] CenterArray = currentLine.split(" ");
-                    System.out.println("VenueName: " + CenterArray[0] + " Date: " +
-                            CenterArray[1] + " Number Of People Taken: " + CenterArray[2]+"\n");
+                String Line = currentLine;
+                String[] centerArr = Line.split(" ");
+                boolean flag = false;
+                if (centerArr[0].equals(changeName)) {
+                    if(centerArr[1].equals(changeDate)) {
+                        if (name !=null) {
+                            centerArr[0] = name;
+                            flag = true;
+                        }
+                        if (date != null) {
+                            centerArr[1] = date;
+                            flag = true;
+                        }
+                        if (num != null) {
+                            centerArr[2] = num;
+                            flag = true;
+                        }
+                    }
+
+                }
+                if(flag) {
+                    writer.write(String.join(" ", centerArr));
+                    writer.write("\n");
+                    continue;
+                }
+                writer.write(currentLine);
+                writer.write("\n");
             }
-        }catch (IOException ex) {
-            ex.printStackTrace();
+            writer.close();
+            successful = TempFile.renameTo(centerFile);
+            if (successful) {
+                JOptionPane.showMessageDialog(null, "successful");
+            } else {
+                JOptionPane.showMessageDialog(null, "something failed");
+            }
+        } catch (IOException io) {
+            io.printStackTrace();
         }
     }
-    public void Search(){
-        try {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Please enter the value you wish to search for");
-            String EnteredValue = scan.nextLine();
-            File mainFile = new File("center.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(mainFile));
-            String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] CenterArray = currentLine.split(" ");
-                if (CenterArray[0].equals(EnteredValue) ||
-                        CenterArray[1].equals(EnteredValue) ||
-                        CenterArray[2].equals(EnteredValue)) {
-                    System.out.println(currentLine);
-                }
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public void View() {
+        VaccinationStatusView vaccinationStatusView = new VaccinationStatusView();
+        vaccinationStatusView.StatusView();
+    }
+    public void Search(String x){
+        VaccinationStatusSearch vss = new VaccinationStatusSearch();
+        vss.StatusSearch(x);
     }
 }
