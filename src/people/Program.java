@@ -31,15 +31,15 @@ public class Program {
             while ((currentLine = reader.readLine()) != null){
                 String[] UsersArray = currentLine.split(" ");
                 if(UsersArray[0].equals(this.email)) {
-                    if(UsersArray[4].equals("YES")) {
-                        UsersArray[4] = "NO";
-                    }else if(UsersArray[4].equals("NO")) {
-                        UsersArray[4] = "YES";
+                    if(UsersArray[6].equals("YES")) {
+                        UsersArray[6] = "NO";
+                    }else if(UsersArray[6].equals("NO")) {
+                        UsersArray[6] = "YES";
                     }else {
                         System.out.println("Have not registered");
                         return;
                     }
-                    System.out.println("change to " + UsersArray[4]);
+                    System.out.println("change to " + UsersArray[6]);
                     String UserString = String.join(" ", UsersArray);
                     writer.write(UserString);
                     writer.write("\n");
@@ -68,7 +68,7 @@ public class Program {
                     System.out.println("" +
                             "Name: " + UsersArray[2] +"" +
                             "\nEmail: "+ UsersArray[0] +"" +
-                            "\nprogram subscribe: " +UsersArray[4]);
+                            "\nprogram subscribe: " +UsersArray[6]);
                     break;
                 }
             }

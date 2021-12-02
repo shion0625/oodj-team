@@ -9,8 +9,6 @@ public class VaccinationStatusView {
     public VaccinationStatusView(){}
     public void StatusView(){
         try {
-            File usersFile = new File("users.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             File centerFile = new File("center.txt");
             BufferedReader centersReader = new BufferedReader(new FileReader(centerFile));
             String CentersCurrentLine;
