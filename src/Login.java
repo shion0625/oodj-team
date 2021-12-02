@@ -1,5 +1,8 @@
 
 
+import Committee.Committee_main;
+import Committee.Citizen_main;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
