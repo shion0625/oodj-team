@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import Committee.PersonalForCommittee;
 
 public class SearchPerson extends JFrame{
     private JTextField mail;
@@ -17,8 +18,8 @@ public class SearchPerson extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     String Mail = mail.getText();
-                    FileOperation f1 = new FileOperation();
-                    f1.SearchPerson(Mail);
+                    PersonalForCommittee p1 = new PersonalForCommittee();
+                    p1.SearchPerson(Mail);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
