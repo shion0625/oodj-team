@@ -1,6 +1,6 @@
 package Committee.ManageVaccinationAppointments;
 
-import Committee.FileOperation;
+import Committee.ManageSchedules;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ public class AddSchedule extends JFrame{
                 try {
                     String Mail = mail.getText();
                     String date = enterDate.getText();
-                    FileOperation f1 = new FileOperation();
+                    ManageSchedules f1 = new ManageSchedules();
                     f1.AddSchedule(Mail, date);
                 } catch (IOException ex) {
                     ex.printStackTrace();

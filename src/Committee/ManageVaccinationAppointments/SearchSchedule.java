@@ -1,6 +1,6 @@
 package Committee.ManageVaccinationAppointments;
 
-import Committee.FileOperation;
+import Committee.ManageSchedules;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class SearchSchedule extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String mail = enterMail.getText();
-                FileOperation f1 = new FileOperation();
+                ManageSchedules f1 = new ManageSchedules();
                 try {
                     f1.SearchSchedule(mail);
                 } catch (IOException ex) {

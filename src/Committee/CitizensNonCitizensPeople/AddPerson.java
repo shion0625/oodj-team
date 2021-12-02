@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import Committee.Committee;
-import Committee.FileOperation;
+import Committee.PersonalForCommittee;
 
 public class AddPerson extends JFrame{
     private JTextField mail;
@@ -22,7 +22,7 @@ public class AddPerson extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileOperation f1 = new FileOperation();
+                    PersonalForCommittee f1 = new PersonalForCommittee();
                     String MailAdd = mail.getText();
                     String Pass = password.getText();
                     String Name = name.getText();

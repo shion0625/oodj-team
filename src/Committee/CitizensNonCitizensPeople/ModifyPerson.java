@@ -1,6 +1,6 @@
 package Committee.CitizensNonCitizensPeople;
 
-import Committee.FileOperation;
+import Committee.PersonalForCommittee;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ public class ModifyPerson extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileOperation f1 = new FileOperation();
+                    PersonalForCommittee f1 = new PersonalForCommittee();
                     String Mail = mail.getText();
                     String changeMail = enterMail.getText();
                     String changePw = enterPw.getText();

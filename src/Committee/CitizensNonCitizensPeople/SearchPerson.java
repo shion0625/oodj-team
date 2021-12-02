@@ -1,6 +1,6 @@
 package Committee.CitizensNonCitizensPeople;
 
-import Committee.FileOperation;
+import Committee.PersonalForCommittee;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +21,7 @@ public class SearchPerson extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     String Mail = mail.getText();
-                    FileOperation f1 = new FileOperation();
+                    PersonalForCommittee f1 = new PersonalForCommittee();
                     f1.SearchPerson(Mail);
                 } catch (IOException ex) {
                     ex.printStackTrace();

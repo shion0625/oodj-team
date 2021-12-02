@@ -1,6 +1,6 @@
 package Committee.ManageVaccinationAppointments;
 
-import Committee.FileOperation;
+import Committee.ManageSchedules;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class RemoveSchedule extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    FileOperation f1 = new FileOperation();
+                    ManageSchedules f1 = new ManageSchedules();
                     String mail = enterMail.getText();
                     f1.RemoveSchedule(mail);
                 } catch (IOException ex) {

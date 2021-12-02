@@ -1,7 +1,7 @@
 package Committee.ManageVaccinationAppointments;
 
 import Committee.ManageVaccinationAppointments.AddSchedule;
-import Committee.FileOperation;
+import Committee.ManageSchedules;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -48,7 +48,7 @@ public class ManageSchedule extends JFrame{
         viewAllScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileOperation f1 = new FileOperation();
+                ManageSchedules f1 = new ManageSchedules();
                 try {
                     f1.ViewSchedule();
                 } catch (IOException ex) {
