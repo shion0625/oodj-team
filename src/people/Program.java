@@ -65,8 +65,10 @@ public class Program {
             while ((currentLine = reader.readLine()) != null) {
                 String[] UsersArray = currentLine.split(" ");
                 if (UsersArray[0].equals(this.email)) {
-                    System.out.println("Name: " + UsersArray[2] +"\nEmail: "+
-                            UsersArray[0] +"\nprogram subscribe: " +UsersArray[4]);
+                    System.out.println("" +
+                            "Name: " + UsersArray[2] +"" +
+                            "\nEmail: "+ UsersArray[0] +"" +
+                            "\nprogram subscribe: " +UsersArray[4]);
                     break;
                 }
             }

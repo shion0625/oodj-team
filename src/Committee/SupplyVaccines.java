@@ -2,8 +2,9 @@ package Committee;
 
 import java.io.*;
 import java.util.Scanner;
-import java.util.ArrayList;
 import Class.OverrideOfFile;
+import Class.VaccinationStatusView;
+import Class.VaccinationStatusSearch;
 
 
 
@@ -28,7 +29,7 @@ public class SupplyVaccines {
             String EnteredNumPerson = scan.nextLine();
             File centerFile = new File("center.txt");
             FileWriter Fw = new FileWriter(centerFile, true);
-            Fw.write(EnteredVenue + " " + EnteredDate + " " + EnteredNumPerson);
+            Fw.write(EnteredVenue + " " + EnteredDate + " " + EnteredNumPerson +" 0");
             Fw.write("\n");
             Fw.close();
         } catch (IOException ex) {
@@ -85,37 +86,11 @@ public class SupplyVaccines {
         boolean result = override.Override();
     }
     public void View() {
-        try {
-            File centerFile = new File("center.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(centerFile));
-            String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] CenterArray = currentLine.split(" ");
-                    System.out.println("VenueName: " + CenterArray[0] + " Date: " +
-                            CenterArray[1] + " Number Of People Taken: " + CenterArray[2]+"\n");
-            }
-        }catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        VaccinationStatusView vaccinationStatusView =new VaccinationStatusView();
+        vaccinationStatusView.StatusView();
     }
     public void Search(){
-        try {
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Please enter the value you wish to search for");
-            String EnteredValue = scan.nextLine();
-            File mainFile = new File("center.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(mainFile));
-            String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] CenterArray = currentLine.split(" ");
-                if (CenterArray[0].equals(EnteredValue) ||
-                        CenterArray[1].equals(EnteredValue) ||
-                        CenterArray[2].equals(EnteredValue)) {
-                    System.out.println(currentLine);
-                }
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        VaccinationStatusSearch vaccinationStatusSearch = new VaccinationStatusSearch();
+        vaccinationStatusSearch.StatusSearch();
     }
 }

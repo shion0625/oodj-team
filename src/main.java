@@ -3,6 +3,7 @@ import Committee.SupplyVaccines;
 import people.Appointment;
 import people.Program;
 import Class.Login;
+import people.VaccinationStatus;
 
 
 import java.util.Scanner;
@@ -166,7 +167,7 @@ public class main {
                 while (AppointmentSection) {
                     System.out.println("" +
                             "\n1) Resister" +
-                            "\n2) Modify" +
+                            "\n2) cancel" +
                             "\n3) View" +
                             "\n4) Exit");
                     int choiceAppointment = scan.nextInt();
@@ -174,6 +175,20 @@ public class main {
                     if (choiceAppointment == 2) appointment.Cancel();
                     if (choiceAppointment == 3) appointment.View();
                     if (choiceAppointment == 4) AppointmentSection = false;
+                }
+            }
+            if(choiceFunctionalities == 3) {
+                VaccinationStatus vaccinationStatus = new VaccinationStatus();
+                boolean VaccinesStatusSection = true;
+                while (VaccinesStatusSection) {
+                    System.out.println("" +
+                            "\n1) View" +
+                            "\n2) Search" +
+                            "\n3) Exit");
+                    int ChoiceVaccinesStatus = scan.nextInt();
+                    if (ChoiceVaccinesStatus == 1) vaccinationStatus.View();
+                    if (ChoiceVaccinesStatus == 2) vaccinationStatus.Search();
+                    if (ChoiceVaccinesStatus == 3) VaccinesStatusSection = false;
                 }
             }
         }
