@@ -12,6 +12,7 @@ public class Committee {
         this.password = ps;
         this.name = na;
         this.isCommittee = is;
+
     }
 
     public String writeNewPerson() {
