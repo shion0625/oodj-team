@@ -1,4 +1,2 @@
-email password name committee appointment_date venue_name program_subscribe:
-po pass kaito No NULL NULL NO
-op pass Ryuji Yes NULL NULL NO
-kkk hh ken No 3/2 NULL NO
+ddd pass kaito No NULL NULL YES
+ggg pass kk No NULL NULL NO

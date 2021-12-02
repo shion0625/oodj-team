@@ -1,7 +1,7 @@
 package people;
 
+import javax.swing.*;
 import java.io.*;
-import java.util.Scanner;
 
 public class Appointment {
     private String email;
@@ -9,14 +9,8 @@ public class Appointment {
     public Appointment(String email){
         this.email = email;
     }
-    public void Register(){
+    public void Register(String venue, String date){
         try{
-            Scanner scan = new Scanner(System.in);
-            System.out.println("enter venue");
-            String enteredVenue = scan.nextLine();
-            System.out.println("enter dateeee");
-            String enteredDate = scan.nextLine();
-
             File usersFile = new File("users.txt");
             File tempFile = new File("temp.txt");
             File centersFile = new File("center.txt");
@@ -31,8 +25,8 @@ public class Appointment {
             boolean isExist = false;
             while((currentLine = centersReader.readLine()) != null){
                 String[] centersArray = currentLine.split(" ");
-                if(centersArray[0].equals(enteredVenue) &&
-                        centersArray[1].equals(enteredDate) &&
+                if(centersArray[0].equals(venue) &&
+                        centersArray[1].equals(date) &&
                         Integer.parseInt(centersArray[2])  > Integer.parseInt(centersArray[3])
                 ){
                     int current_num = Integer.parseInt(centersArray[3]) + 1;
@@ -46,14 +40,17 @@ public class Appointment {
                 centersWriter.write(currentLine);
                 centersWriter.write("\n");
             }
+
             centersWriter.close();
             successful = centersTempFile.renameTo(centersFile);
-            if(isExist) {
+            if(!isExist) {
+                JOptionPane.showMessageDialog(null, "doesn't match this date or venue");
+            }
                 while ((currentLine = reader.readLine()) != null){
                     String[] UsersArray = currentLine.split(" ");
                     if(UsersArray[0].equals(this.email)) {
-                        UsersArray[4] = enteredDate;
-                        UsersArray[5] = enteredVenue;
+                        UsersArray[4] = date;
+                        UsersArray[5] = venue;
                         String UserString = String.join(" ", UsersArray);
                         writer.write(UserString);
                         writer.write("\n");
@@ -64,17 +61,15 @@ public class Appointment {
                 }
                 writer.close();
                 successful = tempFile.renameTo(usersFile);
-            }
             if(successful) {
-                System.out.println("success vaccination appointment register");
+                JOptionPane.showMessageDialog(null, "success register");
             }else {
-                System.out.println("fail vaccination appointment register");
+                JOptionPane.showMessageDialog(null, "failed");
             }
         } catch (IOException ex){
             ex.printStackTrace();
         }
     }
-
     public void Cancel(){
         try{
             File usersFile = new File("users.txt");
@@ -119,32 +114,35 @@ public class Appointment {
             writer.close();
             successful = tempFile.renameTo(usersFile);
             if(successful) {
-                System.out.println("success vaccination appointment cancel");
+                JOptionPane.showMessageDialog(null, "success vaccination appointment cancel");
             }else {
-                System.out.println("fail vaccination appointment cancel");
+                JOptionPane.showMessageDialog(null, "fail vaccination appointment cancel");
             }
         } catch (IOException ex){
             ex.printStackTrace();
         }
     }
-
     public void View(){
         try{
+            System.out.println("Line");
             File usersFile = new File("users.txt");
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             String currentLine;
+            String total = "";
             while ((currentLine = reader.readLine()) != null) {
                 String[] UsersArray = currentLine.split(" ");
                 if (UsersArray[0].equals(this.email)) {
-                    System.out.println("" +
-                            "Name: " + UsersArray[2] +
+                    String Line = "Name: " + UsersArray[2] +
                             "\nEmail: "+ UsersArray[0] +
                             "\nprogram subscribe: " +UsersArray[3] +
                             "\nvaccination appointment date: "+ UsersArray[4] +
-                            "\nVenue name: "+ UsersArray[5]);
+                            "\nVenue name: "+ UsersArray[5];
+
+                    total = total.concat(Line + "\n");
                     break;
                 }
             }
+            JOptionPane.showMessageDialog(null, total);
         } catch (IOException ex){
             ex.printStackTrace();
         }

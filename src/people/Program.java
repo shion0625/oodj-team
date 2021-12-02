@@ -4,6 +4,8 @@ import java.util.Objects;
 import java.util.Scanner;
 import Class.OverrideOfFile;
 
+import javax.swing.*;
+
 public class Program {
     private People PeopleObject;
     private String email;
@@ -12,12 +14,12 @@ public class Program {
         this.email = email;
     }
     public void Register(){
-            OverrideOfFile override = new OverrideOfFile(this.email,"users.txt",4,"YES");
+            OverrideOfFile override = new OverrideOfFile(this.email,"users.txt",6,"YES");
             boolean result = override.Override();
             if(result) {
-                System.out.println("success register");
+                JOptionPane.showMessageDialog(null, "success register");
             }else {
-                System.out.println("fail register");
+                JOptionPane.showMessageDialog(null, "failed");
             }
     }
 
@@ -36,10 +38,10 @@ public class Program {
                     }else if(UsersArray[6].equals("NO")) {
                         UsersArray[6] = "YES";
                     }else {
-                        System.out.println("Have not registered");
+                        JOptionPane.showMessageDialog(null, "Have not registered");
                         return;
                     }
-                    System.out.println("change to " + UsersArray[6]);
+                    JOptionPane.showMessageDialog(null, "change to " + UsersArray[6]);
                     String UserString = String.join(" ", UsersArray);
                     writer.write(UserString);
                     writer.write("\n");
@@ -51,9 +53,9 @@ public class Program {
             writer.close();
             boolean successful = tempFile.renameTo(usersFile);
             if(successful) {
-                System.out.println("success change");
+                JOptionPane.showMessageDialog(null, "success change");
             }else {
-                System.out.println("fail change");
+                JOptionPane.showMessageDialog(null, "fail change");
             }
         } catch (IOException ex){}
     }
@@ -62,16 +64,17 @@ public class Program {
             File usersFile = new File("users.txt");
             BufferedReader reader = new BufferedReader(new FileReader(usersFile));
             String currentLine;
+            String total = "";
             while ((currentLine = reader.readLine()) != null) {
                 String[] UsersArray = currentLine.split(" ");
                 if (UsersArray[0].equals(this.email)) {
-                    System.out.println("" +
-                            "Name: " + UsersArray[2] +"" +
-                            "\nEmail: "+ UsersArray[0] +"" +
-                            "\nprogram subscribe: " +UsersArray[6]);
+                    String Line = "Name: " + UsersArray[2] +"\nEmail: "+
+                            UsersArray[0] +"\nprogram subscribe: " +UsersArray[4];
+                    total = total.concat(Line + "\n");
                     break;
                 }
             }
+            JOptionPane.showMessageDialog(null, total);
         } catch (IOException ex){}
     }
 }

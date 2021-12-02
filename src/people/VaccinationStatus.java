@@ -7,15 +7,16 @@ import java.io.File;
 
 
 public class VaccinationStatus {
-    public VaccinationStatus(){}
+    public VaccinationStatus() {
+    }
 
-    public void View(){
-        VaccinationStatusView vaccinationStatusView =new VaccinationStatusView();
+    public void View() {
+        VaccinationStatusView vaccinationStatusView = new VaccinationStatusView();
         vaccinationStatusView.StatusView();
     }
 
-    public void Search(){
+    public void Search(String x) {
         VaccinationStatusSearch vaccinationStatusSearch = new VaccinationStatusSearch();
-        vaccinationStatusSearch.StatusSearch();
+        vaccinationStatusSearch.StatusSearch(x);
     }
 }
