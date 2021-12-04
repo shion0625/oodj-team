@@ -1,0 +1,2 @@
+ddd pass kaito No NULL NULL YES
+ggg pass kk No NULL NULL NO
