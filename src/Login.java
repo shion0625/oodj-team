@@ -1,7 +1,5 @@
-
-
 import Committee.Committee_main;
-import Committee.Citizen_main;
+import people.Citizen_main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,12 +30,9 @@ public class Login extends JFrame{
                     String password = passWord.getText();
                     result = CheckValidUser(mail, password);
                     if (result.size() == 2) {
-                        System.out.println(result.get(0).equals("Comittee"));
-
-                        if(result.get(0).equals("Comittee")) {
+                        if(result.get(0).equals("Committee")) {
                             Committee_main com = new Committee_main();
                         }else {
-                            System.out.println("coming");
                             Citizen_main cit = new Citizen_main(result.get(1));
                         }
                     }else {
@@ -54,10 +49,7 @@ public class Login extends JFrame{
         ArrayList<String> values = new ArrayList<>();
         try {
             File usersFile = new File("users.txt");
-
             Scanner SC = new Scanner(usersFile);
-
-
             while (SC.hasNextLine()) {
                 String Line = SC.nextLine();
                 String emailInLine = Line.split(" ")[0];
@@ -67,13 +59,11 @@ public class Login extends JFrame{
                     if (isCommittee.equals("Yes")) {
                         values.add("Committee");
                         values.add(emailInLine);
-
                         return values;
                     }
                     if (isCommittee.equals("No")) {
                         values.add("Citizen");
                         values.add(emailInLine);
-
                         return values;
                     }
                 }
@@ -82,7 +72,6 @@ public class Login extends JFrame{
             io.printStackTrace();
         }
         values.add("cannot find this people");
-
         return values;
     }
 }

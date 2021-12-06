@@ -15,10 +15,6 @@ public class SupplyVaccines {
     public SupplyVaccines() {
     }
 
-    public SupplyVaccines(String email) {
-
-    }
-
     public void Add(String name, String date, String num) {
         try {
 
