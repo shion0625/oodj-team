@@ -32,12 +32,9 @@ public class Login extends JFrame{
                     String password = passWord.getText();
                     result = CheckValidUser(mail, password);
                     if (result.size() == 2) {
-                        System.out.println(result.get(0).equals("Comittee"));
-
-                        if(result.get(0).equals("Comittee")) {
+                        if(result.get(0).equals("Committee")) {
                             Committee_main com = new Committee_main();
                         }else {
-                            System.out.println("coming");
                             Citizen_main cit = new Citizen_main(result.get(1));
                         }
                     }else {

@@ -1,2 +1,3 @@
-ddd pass kaito No NULL NULL YES
+kaito@gmail.com password kaito Yes NULL NULL YES
 ggg pass kk No NULL NULL NO
+ryuji_com@gmail.com dragon ryuji No 11/12 NULL NO

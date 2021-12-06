@@ -34,7 +34,7 @@ public class Committee_sub1 extends JFrame{
         viewAllPeopleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileOperation f1 = new FileOperation();
+                PersonalForCommittee f1 = new PersonalForCommittee();
                 try {
                     f1.ViewPerson();
                 } catch (IOException ex) {

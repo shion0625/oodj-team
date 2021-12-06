@@ -1,6 +1,7 @@
 package Committee;
 
 import people.SubmitVaccinationAppointment.Citizen_Appoint_sub;
+import people.SubmitVaccinationAppointment.VaccineStatus;
 import people.VaccinationStatus;
 
 import javax.swing.*;
@@ -37,8 +38,8 @@ public class Citizen_main extends JFrame{
         viewVaccineStatusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                VaccinationStatus vs = new VaccinationStatus();
-                vs.View();
+
+                VaccineStatus vs = new VaccineStatus();
             }
         });
 
