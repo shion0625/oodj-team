@@ -9,7 +9,6 @@ public class VaccinationStatusSearch {
 
     public void StatusSearch(String x){
         try {
-            Scanner scan = new Scanner(System.in);
             File mainFile = new File("center.txt");
             BufferedReader reader = new BufferedReader(new FileReader(mainFile));
             String currentLine;
@@ -24,7 +23,6 @@ public class VaccinationStatusSearch {
                     total = total.concat(Line + "\n");
 
                 }
-
             }
             JOptionPane.showMessageDialog(null, total);
         } catch (IOException ex) {

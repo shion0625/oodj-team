@@ -7,6 +7,7 @@ import java.io.IOException;
 import Committee.CitizensNonCitizensPeople.AddPerson;
 import Committee.CitizensNonCitizensPeople.ModifyPerson;
 import Committee.CitizensNonCitizensPeople.SearchPerson;
+import Committee.PersonalForCommittee;
 
 public class Committee_sub1 extends JFrame{
     private JButton addNewPersonButton;
@@ -34,7 +35,7 @@ public class Committee_sub1 extends JFrame{
         viewAllPeopleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FileOperation f1 = new FileOperation();
+                PersonalForCommittee f1 = new PersonalForCommittee();
                 try {
                     f1.ViewPerson();
                 } catch (IOException ex) {
