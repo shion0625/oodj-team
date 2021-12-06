@@ -20,7 +20,4 @@ public class Committee {
         return this.mail + " " + this.password + " " + this.name + " " + this.isCommittee +" NULL NULL NO";
     }
 
-
-
-
 }

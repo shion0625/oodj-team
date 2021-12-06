@@ -15,8 +15,8 @@ public class VaccinationStatus {
         vaccinationStatusView.StatusView();
     }
 
-    public void Search(String x) {
+    public void Search(String value) {
         VaccinationStatusSearch vaccinationStatusSearch = new VaccinationStatusSearch();
-        vaccinationStatusSearch.StatusSearch(x);
+        vaccinationStatusSearch.StatusSearch(value);
     }
 }
