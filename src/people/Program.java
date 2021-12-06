@@ -7,7 +7,6 @@ import Class.OverrideOfFile;
 import javax.swing.*;
 
 public class Program {
-    private People PeopleObject;
     private String email;
     public Program() {}
     public Program(String email) {

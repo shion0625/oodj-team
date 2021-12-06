@@ -33,7 +33,6 @@ public class Login extends JFrame{
                         if(result.get(0).equals("Committee")) {
                             Committee_main com = new Committee_main();
                         }else {
-                            System.out.println("coming");
                             Citizen_main cit = new Citizen_main(result.get(1));
                         }
                     }else {
