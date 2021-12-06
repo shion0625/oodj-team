@@ -1,4 +1,4 @@
-package Committee.CitizensNonCitizensPeople;
+package people.RegisterVaccinationProgramme;
 
 import people.Program;
 

@@ -19,7 +19,6 @@ public class Appointment {
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
             BufferedReader centersReader = new BufferedReader(new FileReader(centersFile));
             BufferedWriter centersWriter = new BufferedWriter(new FileWriter(centersTempFile));
-
             String currentLine;
             boolean successful = false;
             boolean isExist = false;
@@ -40,7 +39,6 @@ public class Appointment {
                 centersWriter.write(currentLine);
                 centersWriter.write("\n");
             }
-
             centersWriter.close();
             successful = centersTempFile.renameTo(centersFile);
             if(!isExist) {
@@ -122,6 +120,7 @@ public class Appointment {
             ex.printStackTrace();
         }
     }
+
     public void View(){
         try{
             System.out.println("Line");

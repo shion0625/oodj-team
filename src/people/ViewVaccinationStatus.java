@@ -3,11 +3,9 @@ package people;
 import Class.VaccinationStatusView;
 import Class.VaccinationStatusSearch;
 
-import java.io.File;
 
-
-public class VaccinationStatus {
-    public VaccinationStatus() {
+public class ViewVaccinationStatus {
+    public ViewVaccinationStatus() {
     }
 
     public void View() {
