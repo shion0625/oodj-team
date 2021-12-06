@@ -7,7 +7,6 @@ import Class.OverrideOfFile;
 import javax.swing.*;
 
 public class Program {
-    private People PeopleObject;
     private String email;
     public Program() {}
     public Program(String email) {
@@ -22,7 +21,6 @@ public class Program {
                 JOptionPane.showMessageDialog(null, "failed");
             }
     }
-
     public void Change(){
         try{
             File usersFile = new File("users.txt");
@@ -57,7 +55,9 @@ public class Program {
             }else {
                 JOptionPane.showMessageDialog(null, "fail change");
             }
-        } catch (IOException ex){}
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
     public void View() {
         try{
@@ -75,6 +75,8 @@ public class Program {
                 }
             }
             JOptionPane.showMessageDialog(null, total);
-        } catch (IOException ex){}
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
 }

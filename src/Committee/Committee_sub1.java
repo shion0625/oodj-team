@@ -7,6 +7,7 @@ import java.io.IOException;
 import Committee.CitizensNonCitizensPeople.AddPerson;
 import Committee.CitizensNonCitizensPeople.ModifyPerson;
 import Committee.CitizensNonCitizensPeople.SearchPerson;
+import Committee.PersonalForCommittee;
 
 public class Committee_sub1 extends JFrame{
     private JButton addNewPersonButton;

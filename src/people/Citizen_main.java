@@ -1,13 +1,12 @@
-package Committee;
+package people;
 
 import people.SubmitVaccinationAppointment.Citizen_Appoint_sub;
-import people.SubmitVaccinationAppointment.VaccineStatus;
-import people.VaccinationStatus;
+import people.VaccinationStatus.VaccineStatus_sub1;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Committee.CitizensNonCitizensPeople.Citizen_Register_sub;
+import people.RegisterVaccinationProgramme.Citizen_Register_sub;
 
 public class Citizen_main extends JFrame{
     private JButton registerToVaccineProgramButton;
@@ -38,8 +37,7 @@ public class Citizen_main extends JFrame{
         viewVaccineStatusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                VaccineStatus vs = new VaccineStatus();
+                VaccineStatus_sub1 vs = new VaccineStatus_sub1();
             }
         });
 
