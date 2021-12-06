@@ -15,12 +15,20 @@ public class SearchVaccineStatus extends JFrame{
         setContentPane(Search_Vaccine_Panel);
         setVisible(true);
         setSize(450, 300);
-        String somethings = something.getText();
+
+
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String somethings = something.getText();
                 VaccinationStatus vs = new VaccinationStatus();
                 vs.Search(somethings);
+            }
+        });
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
